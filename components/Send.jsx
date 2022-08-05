@@ -1,5 +1,5 @@
-import { Button, FormControl, FormLabel, Input, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Text } from "@chakra-ui/react";
-import Moralis from "moralis/types";
+import { Button, FormControl, FormLabel, Input, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Text, useToast } from "@chakra-ui/react";
+import Moralis from "moralis";
 import { useState } from "react";
 import { useWeb3Transfer } from "react-moralis";
 import CustomContainer from "./CustomContainer";
@@ -9,6 +9,7 @@ export default function Send() {
     const [amount, setAmount] = useState(0)
     const handleChange = (value) => setAmount(value)
     const [receiver, setReseiver] = useState()
+    const toast = useToast()
     const { fetch, isFetching } = useWeb3Transfer({
         amount: Moralis.Units.ETH(amount),
         receiver: receiver,
@@ -19,8 +20,24 @@ export default function Send() {
     return (
         <CustomContainer>
             <Text fontSize="xl" fontWeight="bold">Send ETH</Text>
-            <form onSubmit={e => {
+            <form onSubmit={async e => {
                 e.preventDefault()
+                await Moralis.enableWeb3()
+                fetch({
+                    onSuccess: () => {
+                        toast({
+                            title:"ETH succsesfully sent.",
+                            description:"Fresh ETH are showing up into the receiver wallet",
+                            status:"success",
+                            duration:9000,
+                            isClosable:true
+                        })
+                        setReseiver("")
+                    },
+                    onError: (error) => {
+
+                    }
+                })
             }}>
                 <FormControl mt="4">
                     <FormLabel htmlFor="amount">
