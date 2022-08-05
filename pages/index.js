@@ -4,7 +4,7 @@ import { useMoralis } from "react-moralis"
 
 
 export default function Home() {
-  const {isAuthenticated} = useMoralis()
+  const {isAuthenticated,authenticate} = useMoralis()
  if (!isAuthenticated){
   return(
     <>
@@ -19,10 +19,16 @@ export default function Home() {
      height="100vh"
      bgGradient="linear(to-br,teal.400,purple.300)"
      >
-      <Text>
+      <Text fontSize="5xl" fontWeight="bold" color="white">
         Dashboard3
       </Text>
-      <Button>Login with Metamask</Button>
+      <Button
+      onClick={()=>authenticate({
+        
+      })}
+       colorScheme="purple" 
+       size="lg" 
+       mt="6">Login with Metamask</Button>
     </Flex>
     </>
   )
