@@ -1,6 +1,7 @@
 import { Button, Flex, Text } from "@chakra-ui/react"
 import Head from "next/head"
 import { useMoralis } from "react-moralis"
+import Header from "../components/Header"
 
 
 export default function Home() {
@@ -24,7 +25,7 @@ export default function Home() {
       </Text>
       <Button
       onClick={()=>authenticate({
-        
+
       })}
        colorScheme="purple" 
        size="lg" 
@@ -34,9 +35,14 @@ export default function Home() {
   )
  }
   return (
-    <div>
-      <h1>Hello world!</h1>
-    </div>
+    <>
+       <Head>
+      <title>Dashboard3</title>
+    </Head>
+    <Flex>
+      <Header/>
+    </Flex>
+    </>
   )
 }
     
