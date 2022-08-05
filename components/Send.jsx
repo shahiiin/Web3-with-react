@@ -35,7 +35,13 @@ export default function Send() {
                         setReseiver("")
                     },
                     onError: (error) => {
-
+                        toast({
+                            title:"Error",
+                            description:error,
+                            status:"error",
+                            duration:9000,
+                            isClosable:true
+                        })
                     }
                 })
             }}>
@@ -55,7 +61,7 @@ export default function Send() {
                     </FormLabel>
                     <Input id="receiver" type="text" placeholder="Receiver address" value={receiver} onChange={e => setReseiver(e.target.value)} />
                 </FormControl>
-                <Button mt="4" type="submit" colorScheme="purple">Send</Button>
+                <Button mt="4" type="submit" colorScheme="purple" _disabled={isFetching}>Send</Button>
             </form>
         </CustomContainer>
     )
