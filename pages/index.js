@@ -1,4 +1,4 @@
-import { Button, Flex, Text } from "@chakra-ui/react"
+import { Box, Button, Flex, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from "@chakra-ui/react"
 import Head from "next/head"
 import { useMoralis } from "react-moralis"
 import Header from "../components/Header"
@@ -41,6 +41,24 @@ export default function Home() {
     </Head>
     <Flex direction="column" width="100vw" height="100vh">
       <Header user={user} logout={logout} isLoggingOut={isLoggingOut}/>
+      <Box flex="1" bg="purple.100" px="44" py="20">
+        <Tabs size="lg" colorScheme="purple" align="center" variant="enclosed">
+          <TabList>
+            <Tab fontWeight="bold">Profile</Tab>
+            <Tab fontWeight="bold">Balance</Tab>
+            <Tab fontWeight="bold">Transactions</Tab>
+            <Tab fontWeight="bold">NFTs</Tab>
+            <Tab fontWeight="bold">Send EHT</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>Profile</TabPanel>
+            <TabPanel>Balance</TabPanel>
+            <TabPanel>Transactions</TabPanel>
+            <TabPanel>NFTs</TabPanel>
+            <TabPanel>Send EHT</TabPanel>
+          </TabPanels>
+        </Tabs>
+      </Box>
     </Flex>
     </>
   )
