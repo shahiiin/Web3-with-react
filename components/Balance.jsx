@@ -18,7 +18,7 @@ export default function Balance({ user }) {
             chain: "rinkeby",
             address: user.get('ethAddress')
         }).catch(e => console.log(e))
-        if (result.balance) {
+        if (result.data) {
             SetEthBalance(Moralis.Units.FromWei(result.balance))
         }
     }
@@ -31,7 +31,7 @@ export default function Balance({ user }) {
             }
         })
     }, [])
-    console.log(data, 'aa')
+  
     return (
 
         <CustomContainer>

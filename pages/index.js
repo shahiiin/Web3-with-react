@@ -4,6 +4,7 @@ import { useMoralis } from "react-moralis"
 import Balance from "../components/Balance"
 import Header from "../components/Header"
 import Profile from "../components/Profile"
+import Transactions from "../components/Transactions"
 
 
 export default function Home() {
@@ -59,7 +60,9 @@ export default function Home() {
             <TabPanel>
               <Balance user={user}/>
             </TabPanel>
-            <TabPanel>Transactions</TabPanel>
+            <TabPanel>
+              <Transactions user={user}/>
+            </TabPanel>
             <TabPanel>NFTs</TabPanel>
             <TabPanel>Send EHT</TabPanel>
           </TabPanels>
