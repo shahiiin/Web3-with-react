@@ -3,7 +3,9 @@ import Head from "next/head"
 import { useMoralis } from "react-moralis"
 import Balance from "../components/Balance"
 import Header from "../components/Header"
+import Nft from "../components/Nft"
 import Profile from "../components/Profile"
+import Send from "../components/Send"
 import Transactions from "../components/Transactions"
 
 
@@ -63,8 +65,12 @@ export default function Home() {
             <TabPanel>
               <Transactions user={user}/>
             </TabPanel>
-            <TabPanel>NFTs</TabPanel>
-            <TabPanel>Send EHT</TabPanel>
+            <TabPanel>
+              <Nft user={user}/>
+            </TabPanel>
+            <TabPanel>
+              <Send user={user}/>
+            </TabPanel>
           </TabPanels>
         </Tabs>
       </Box>

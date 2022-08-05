@@ -26,7 +26,7 @@ export default function Transactions({ user }) {
     useEffect(() => {
         fetchTransactions()
     }, [])
-    console.log(transactions, 'aa')
+    
 
     return (
         <CustomContainer>
