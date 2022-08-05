@@ -5,7 +5,7 @@ import Header from "../components/Header"
 
 
 export default function Home() {
-  const {isAuthenticated,authenticate} = useMoralis()
+  const {isAuthenticated,authenticate,user,logout,isLoggingOut} = useMoralis()
  if (!isAuthenticated){
   return(
     <>
@@ -25,7 +25,7 @@ export default function Home() {
       </Text>
       <Button
       onClick={()=>authenticate({
-
+       signingMessage: "Sign to login to Dashboard3"
       })}
        colorScheme="purple" 
        size="lg" 
@@ -39,8 +39,8 @@ export default function Home() {
        <Head>
       <title>Dashboard3</title>
     </Head>
-    <Flex>
-      <Header/>
+    <Flex direction="column" width="100vw" height="100vh">
+      <Header user={user} logout={logout} isLoggingOut={isLoggingOut}/>
     </Flex>
     </>
   )
