@@ -18,7 +18,7 @@ export default function Balance({ user }) {
             chain: "rinkeby",
             address: user.get('ethAddress')
         }).catch(e => console.log(e))
-        if (result.data) {
+        if (result.balance) {
             SetEthBalance(Moralis.Units.FromWei(result.balance))
         }
     }
